@@ -1,10 +1,7 @@
 import express from "express";
 
 import { User } from "./models/user.js"; //modelo do usuario (nome e senha);
-import { Apps } from "./models/apps.js"; //APLICATIVOS (QUAIS TRABALHA);
-import { Goals } from "./models/goals.js"; //tabela de obhjetivos (dinheiro e tempo e finais de semana);
-import { Current } from "./models/current.js"; //tabela de ganhos e gastos totais;
-import { Data } from "./models/user_options.js"; // tabela com configurações do usuário
+import { Data } from "./models/data.js"; //tabela com configurações do usuário
 
 const PORT = 8182; // porta
 
@@ -48,6 +45,27 @@ app.post("/authenticate", async(req, res)=>{
     }catch(err){
         res.send(err) // se a solicitação der erro retorna 404 (not)
     }
+})
+                        /*rota de criar usuario e senha*/
+app.post("/createUser", async(req, res)=>{
+    try{
+        const name = req.body.name;
+        const password = req.body.password;
+
+        const newUser = await User.create({
+        name: name,
+        password: password,
+    })
+    if (newUser){
+        res.sendStatus(200);
+        console.log("usuário criado")
+    }
+    else{
+        res.sendStatus(401);
+        console.log("erro ao criar usiário")
+    }
+    }
+    catch(err){console.log(err)}
 })
 
 

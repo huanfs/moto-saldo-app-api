@@ -14,6 +14,9 @@ export const User = sequelize.define("users",{
     password: {
         type: Sequelize.CHAR(8),
     },
+    data: {
+        type: Sequelize.JSON,
+    }
 });
 
 // User.sync()
