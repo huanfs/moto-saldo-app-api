@@ -73,15 +73,27 @@ app.post("/createUser", async(req, res)=>{
 
 
                         /* rota criar o objeto com configurações do usuário*/
+// app.post("/createOptions", async(req, res)=>{
+//     try{
+//         const userData = req.body;
+//         Data.create({user_data: userData})
+//         .then((response)=>{res.send(response)})
+//     }
+//     catch ( err ) {
+//         res.send(err);
+//     }
+// })
+
+
 app.post("/createOptions", async(req, res)=>{
-    try{
-        const userData = req.body;
-        Data.create({user_data: userData})
-        .then((response)=>{res.send(response)})
+    try{  
+        const data = JSON.stringify(req.body);
+        const updated = await User.update(
+            {data: data},
+            {where: {name:req.body.userName, password: req.body.userPassword}}
+        ).then((response)=>{console.log("deu certo")})
     }
-    catch ( err ) {
-        res.send(err);
-    }
+    catch(err){console.log("erro " + err)}
 })
 
 
