@@ -35,7 +35,11 @@ app.post("/authenticate", async(req, res)=>{
     try{
         const user = await User.findOne({where:{name:name, password:password}})
         if(user){ //bloco executado quando encontra o usuário
-            res.send(user) // retorna automaticamente um status(200) de ok
+            res.send({
+                name: user.name,
+                password:user.password,
+                data:user.data
+            }) 
             console.log("achou")
         }
         else{ // bloco executado quando não encontra o usuário
@@ -95,6 +99,44 @@ app.post("/createOptions", async(req, res)=>{
     }
     catch(err){console.log("erro " + err)}
 })
+
+
+
+
+
+
+
+
+
+
+
+
+app.post("/getData", async (req, res) => {
+    try {
+        const name = req.body.name;
+        const password = req.body.password;
+
+        const getData = await User.findOne({
+            where: { name: name, password: password }
+        });
+
+        if (getData) {
+            res.send(getData); // Envia o objeto diretamente
+        } else {
+            res.sendStatus(404); // Retorna 404 se o usuário não for encontrado
+        }
+    } catch (err) {
+        console.error("Erro no back-end", err);
+        res.sendStatus(500); // Retorna erro 500 em caso de falha no servidor
+    }
+});
+
+
+
+
+
+
+
 
 
 
