@@ -1,7 +1,6 @@
 import express from "express";
 
 import { User } from "./models/user.js"; //modelo do usuario (nome e senha);
-import { Data } from "./models/data.js"; //tabela com configurações do usuário
 
 const PORT = 8182; // porta
 
@@ -119,7 +118,6 @@ app.post("/getData", async (req, res) => {
         const getData = await User.findOne({
             where: { name: name, password: password }
         });
-
         if (getData) {
             res.send(getData); // Envia o objeto diretamente
         } else {
