@@ -109,7 +109,6 @@ app.post("/createOptions", async(req, res)=>{
 
 
 
-
 app.post("/getData", async (req, res) => {
     try {
         const name = req.body.name;
@@ -128,6 +127,30 @@ app.post("/getData", async (req, res) => {
         res.sendStatus(500); // Retorna erro 500 em caso de falha no servidor
     }
 });
+
+
+app.put("/updateData", async(req, res)=>{
+    try{
+        const name = req.body.name;
+        const password = req.body.password;
+        const data = req.body.data;
+
+        const updateUser = User.update({data:data}, {
+            where: {name:name, password:password}
+        })
+
+        if(updateUser){
+            res.sendStatus(200)
+        }
+        else{
+            res.sendStatus(400)
+        }
+    }
+    catch(err){
+        console.log("erro na atualização" + err)
+        res.sendStatus(400)
+    }
+})
 
 
 
