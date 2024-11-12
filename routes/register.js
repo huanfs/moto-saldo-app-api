@@ -23,7 +23,10 @@ register.post("/", async(req, res)=>{
         console.log("erro ao criar usiário")
     }
     }
-    catch(err){console.log(err)} // CASO A SOLICITAÇÃO NÃO POSSA SER REALIZADA, IMRPIME NO CONSOLE O ERRO
+    catch(err){
+        console.log(err);
+        res.sendStatus(400);
+    } // CASO A SOLICITAÇÃO NÃO POSSA SER REALIZADA, IMRPIME NO CONSOLE O ERRO
 });
 
 export default register;
