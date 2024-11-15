@@ -40,4 +40,6 @@ app.get("*", async(req, res)=>{
     res.status(404).send("não encontramos o que você está procurando :'-(");
 })
 
-app.listen(PORT); //servidor rodando na porta 8182
+//app.listen(PORT); //servidor rodando na porta 8182
+
+export default app
