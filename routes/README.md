@@ -1,0 +1,1 @@
+* aqui estão as rotas da aplicação, elas tambem estão na raiz do projeto*
