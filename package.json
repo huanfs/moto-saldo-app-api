@@ -17,7 +17,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
-    "sequelize": "^6.37.4",
+    "sequelize": "^6.37.5",
     "vercel": "^32.3.0"
   },
   "engines": {
