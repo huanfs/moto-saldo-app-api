@@ -42,4 +42,4 @@ app.get("*", async(req, res)=>{
 
 //app.listen(PORT); //servidor rodando na porta 8182
 
-export default app
+export default app;
